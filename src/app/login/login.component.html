@@ -1,22 +1,70 @@
-<mat-card>
-    <mat-card-title>Inicio de sesion</mat-card-title>
+<div class="login-container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card class="login-card">
+        <mat-card-title class="login-title">Inicio de Sesión</mat-card-title>
 
-    <mat-card-content>
-        <form [formGroup]="loginFrom" (ngSubmit)="login()">
-        <p>
-            <mat-form-field>
-                <input type="text" formControlName="email" matInput placeholder="Email">
-            </mat-form-field>
-        </p>
-    <p>
-        <mat-form-field>
-            <input type="password" formControlName="password" matInput placeholder="Contraseña">
-        </mat-form-field>
-    </p>
-    <div>
-        <button type="submit"[disabled]="!loginFrom.valid" mat-raised-button>Iniciar Sesion</button>
-    </div>
-</form>
-</mat-card-content>
+        <mat-card-content>
+            <form [formGroup]="loginFrom" (ngSubmit)="login()">
+                <mat-form-field appearance="fill" class="input-field">
+                    <mat-label>Email</mat-label>
+                    <input type="email" formControlName="email" matInput placeholder="Email">
+                    <mat-error *ngIf="loginFrom.get('email')?.invalid && loginFrom.get('email')?.touched">
+                        Ingrese un email válido
+                    </mat-error>
+                </mat-form-field>
 
-</mat-card>
+                <mat-form-field appearance="fill" class="input-field">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" formControlName="password" matInput placeholder="Contraseña">
+                    <mat-error *ngIf="loginFrom.get('password')?.invalid && loginFrom.get('password')?.touched">
+                        Ingrese una contraseña
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="button-container" fxLayout="row" fxLayoutAlign="center center">
+                    <button type="submit" [disabled]="!loginFrom.valid" mat-raised-button color="primary">
+                        Iniciar Sesión
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<style>
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+</style>

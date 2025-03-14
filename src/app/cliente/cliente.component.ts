@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiclienteService } from '../services/apicliente.service';
 import { Response } from '../models/response';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Cliente } from '../models/cliente';
-import { DeleteComponent } from '../common/delete/delete.component';
+import { DeleteComponent } from './common/delete/delete.component';
 import { publicDecrypt } from 'crypto';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

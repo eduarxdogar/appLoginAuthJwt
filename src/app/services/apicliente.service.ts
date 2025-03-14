@@ -4,35 +4,31 @@ import { Observable } from 'rxjs';
 import { Response } from '../models/response';
 import { Cliente } from '../models/cliente';
 
-const httpOption ={
-  headers : new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
+const httpOption = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiclienteService {
+  url: string = 'http://localhost:59489/api/cliente';
 
-  url: string = "https://localhost:44342/api/cliente";
+  constructor(private _http: HttpClient) {}
 
-  constructor(
-    private _http: HttpClient
-  ) { }
-
-  getClientes(): Observable<Response>{
-
+  getClientes(): Observable<Response> {
     return this._http.get<Response>(this.url);
   }
 
-  add(cliente : Cliente):Observable<Response> {
+  add(cliente: Cliente): Observable<Response> {
     return this._http.post<Response>(this.url, cliente, httpOption);
   }
-  edit(cliente : Cliente):Observable<Response> {
+  edit(cliente: Cliente): Observable<Response> {
     return this._http.put<Response>(this.url, cliente, httpOption);
   }
-  eliminar(id: number):Observable<Response> {
+  eliminar(id: number): Observable<Response> {
     return this._http.delete<Response>(`${this.url}/${id}`);
   }
 }

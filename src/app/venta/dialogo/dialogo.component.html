@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>Nueva Venta</h1>
+<div mat-dialog-content class="venta-dialog-content">
+  <mat-form-field class="full-width">
+    <mat-label>Cliente</mat-label>
+    <input matInput [(ngModel)]="venta.idCliente" placeholder="Ingrese el nombre del cliente">
+  </mat-form-field>
+  
+  <!-- Formulario para agregar concepto -->
+  <form [formGroup]="conceptoFrom" (ngSubmit)="addConcepto()" class="concepto-form">
+    <mat-form-field class="full-width">
+      <mat-label>Producto</mat-label>
+      <input type="text" formControlName="idProducto" matInput placeholder="Ingrese el producto">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Cantidad</mat-label>
+      <input type="text" formControlName="cantidad" matInput placeholder="Cantidad">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Importe</mat-label>
+      <input type="text" formControlName="importe" matInput placeholder="Importe">
+    </mat-form-field>
+    
+    <!-- Botón de agregar concepto -->
+    <div>
+      <button type="submit" [disabled]="!conceptoFrom.valid" mat-raised-button color="primary">Agregar Concepto</button>
+    </div>
+  </form>
+  
+  <!-- Tabla de conceptos -->
+  <div class="conceptos-table">
+    <h5>Conceptos</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Cantidad</th>
+          <th>Importe</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of conceptos">
+          <td>{{item.cantidad}}</td>
+          <td>{{item.importe}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="addVenta()">Guardar</button>
+  </div>
+</div>

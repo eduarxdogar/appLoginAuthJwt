@@ -1,1 +1,56 @@
-<p>home works!</p>
+<mat-toolbar color="primary">
+  <span>Mi Tienda</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/cart">
+    <mat-icon>shopping_cart</mat-icon> Carrito
+  </button>
+  <button mat-button routerLink="/contact">Contacto</button>
+</mat-toolbar>
+
+<div class="home-container">
+  <!-- Banner Promocional -->
+  <div class="banner">
+    <h2>¡Bienvenidos a nuestra tienda de productos!</h2>
+    <p>Encuentra todo lo que necesitas para la limpieza de tu hogar y oficina.</p>
+  </div>
+
+  <!-- Productos Destacados -->
+  <div class="products-grid">
+    <h3>Productos Destacados</h3>
+    <mat-card class="product-card" *ngFor="let product of products">
+      <mat-card-header>
+        <mat-card-title>{{ product.title }}</mat-card-title>
+        <mat-card-subtitle>{{ product.subtitle }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="product.imageUrl" alt="{{ product.title }}" />
+      <mat-card-content>
+        <p>{{ product.description }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="accent">Agregar al Carrito</button>
+        <button mat-button color="primary">Ver Detalles</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <!-- Categorías de Productos -->
+  <div class="categories">
+    <h3>Categorías</h3>
+    <div class="categories-grid">
+      <mat-card class="category-card" *ngFor="let category of categories">
+        <mat-card-title>{{ category.name }}</mat-card-title>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Testimonios de Clientes -->
+  <div class="testimonials">
+    <h3>Testimonios de Clientes</h3>
+    <mat-card class="testimonial-card" *ngFor="let testimonial of testimonials">
+      <mat-card-content>
+        <p>{{ testimonial.message }}</p>
+        <p><strong>- {{ testimonial.author }}</strong></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
