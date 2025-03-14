@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { ApiclienteService } from '../services/apicliente.service';
-import { Cliente } from '../models/cliente';
+import { ApiclienteService } from '../../services/apicliente.service';
+import { Cliente } from '../../models/cliente';
 
 @Component({
   selector: 'app-dialog',

@@ -1,3 +1,89 @@
-table{
+// Colores
+$table-bg-color: #f8f8f8;
+$header-bg-color: #4caf50;
+$header-text-color: #ffffff;
+$button-primary-color: #1976d2;
+$button-warn-color: #e53935;
+
+// Contenedor principal
+.gobal-content{
+  width: 100%;
+  height: 100vh; // Ocupa toda la altura de la ventana
+  display: flex;
+}
+
+.table-container {
+  padding: 20px;
+  background-color: $table-bg-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  height: calc(100vh - 64px); // Ajusta según la altura de tu barra de navegación
+  display: flex ;
+  flex-direction: column;
+
+  // Asegura que el contenedor de la tabla ocupe todo el espacio disponible
+  .table-wrapper {
     width: 100%;
+    height: 50%;
+    flex: 1; // Hace que el contenedor de la tabla ocupe todo el espacio restante
+    overflow: auto; // Permite el desplazamiento si el contenido es mayor que el contenedor
+
+    // Asegura que la tabla ocupe todo el ancho
+    table {
+      width: 100%;
+      height: 100%;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+
+      // Cabecera de la tabla
+      mat-header-row, th.mat-header-cell {
+        background-color: $header-bg-color;
+        color: $header-text-color;
+        font-weight: bold;
+        text-align: left;
+        padding: 10px;
+      }
+
+      // Filas de la tabla
+      tr.mat-row {
+        &:nth-child(odd) {
+          background-color: lighten($table-bg-color, 5%);
+        }
+        &:nth-child(even) {
+          background-color: #ffffff;
+        }
+      }
+
+      // Celdas
+      td.mat-cell {
+        padding: 10px;
+      }
+
+      // Botones de acción
+      td.mat-cell button {
+        margin-right: 5px;
+        &:first-child {
+          background-color: $button-primary-color;
+          color: #ffffff;
+          &:hover {
+            background-color: darken($button-primary-color, 10%);
+          }
+        }
+        &:last-child {
+          background-color: $button-warn-color;
+          color: #ffffff;
+          &:hover {
+            background-color: darken($button-warn-color, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Botón "Nuevo"
+.button-container {
+  margin-bottom: 20px;
 }

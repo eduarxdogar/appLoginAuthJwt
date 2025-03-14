@@ -1,0 +1,21 @@
+// Colores
+$button-bg-color: #1976d2; // Color primario
+$button-hover-color: darken($button-bg-color, 10%);
+
+// Contenedor del botón
+.button-container {
+  padding: 20px;
+  text-align: center; // Centra el botón en el contenedor
+}
+
+// Botón
+button {
+  font-size: 16px; // Aumentar el tamaño de la fuente
+  padding: 10px 20px; // Aumentar el padding
+  background-color: $button-bg-color;
+  color: #ffffff;
+
+  &:hover {
+    background-color: $button-hover-color;
+  }
+}
